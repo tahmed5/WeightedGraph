@@ -2,6 +2,8 @@
 import math
 import time
 
+#Standard 4 Node Graph
+'''
 graph = {}
 graph["start"] = {}
 graph["start"]["a"] = 6
@@ -12,6 +14,45 @@ graph["b"] = {}
 graph["b"]["a"] = 3
 graph["b"]["end"] = 5
 graph["end"] = {}
+'''
+
+#With Negative
+'''
+graph = {}
+graph["start"] = {}
+graph["start"]["a"] = 2
+graph["start"]["b"] = 2
+graph["a"] = {}
+graph["a"]["c"] = 2
+graph["a"]["end"] = 2
+graph["b"] = {}
+graph["b"]["a"] = 2
+graph["c"] = {}
+graph["c"]["b"] = -1
+graph["c"]["end"] = 2
+graph["end"] = {}
+'''
+
+graph = {}
+graph["start"] = {}
+graph["start"]["a"] = 2
+graph["start"]["d"] = 1
+graph["a"] = {}
+graph["a"]["c"] = 3
+graph["a"]["b"] = 5
+graph["a"]["start"] = 2
+
+graph["d"] = {}
+graph["d"]["e"]
+graph["d"]["start"] = 1
+
+graph["e"] = {}
+graph["e"]["c"] = 3
+graph["e"]["d"] = 2
+
+graph["end"] = {}
+
+
 
 def dijkstra(graph, start, end):
     cost = {}
@@ -30,7 +71,7 @@ def dijkstra(graph, start, end):
         for node in NotVisited:
             if minNode == None:
                 minNode = node
-            elif cost[node] > cost[minNode]:
+            elif cost[node] < cost[minNode]:
                 minNode = node
 
         for child, weight in graph[minNode].items():
@@ -42,6 +83,9 @@ def dijkstra(graph, start, end):
 
     currentNode = end
     path = []
+    print(cost)
+    print(parent)
+    time.sleep(10)
     while currentNode != start:
         try:
             path.append(parent[currentNode])
